@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserListComponent } from './user-list/user-list.component';
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { UserCreateComponent } from './user-create/user-create.component';
 
 const routes: Routes = [{
@@ -15,7 +16,7 @@ const routes: Routes = [{
 @NgModule({
   declarations: [UserListComponent, UserCreateComponent],
   imports: [
-    CommonModule, RouterModule.forChild(routes)
+    CommonModule, RouterModule.forChild(routes), FormsModule
   ]
 })
 export class UserModule { }

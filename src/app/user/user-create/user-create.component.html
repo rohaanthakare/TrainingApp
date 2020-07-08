@@ -1,1 +1,38 @@
-<p>user-create works!</p>
+<h2>
+    New User Form
+</h2>
+<form>
+    <div>
+        <label>Username</label>
+        <input type="text" name="username" [(ngModel)]="user.username"/>
+    </div>
+    <div>
+        <label>Password</label>
+        <input type="text" name="password" [(ngModel)]="user.password"/>
+    </div>
+    <div>
+        <label>Full Name</label>
+        <input type="text" name="name" [(ngModel)]="user.name"/>
+    </div>
+    <div>
+        <label>Mobile No.</label>
+        <input type="number" name="mobileNo" [(ngModel)]="user.mobileNo"/>
+    </div>
+    <div>
+        <button (click)="createUser()">Create User</button>
+    </div>
+</form>
+<div>
+    <div>
+        <label>Username - {{user.username}}</label>
+    </div>
+    <div>
+        <label>Password - {{user.password}}</label>
+    </div>
+    <div>
+        <label>Full Name - {{user.name}}</label>
+    </div>
+    <div>
+        <label>Mobile No. - {{user.mobileNo}}</label>
+    </div>
+</div>
