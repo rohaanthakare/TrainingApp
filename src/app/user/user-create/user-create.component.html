@@ -1,22 +1,26 @@
 <h2>
     New User Form
 </h2>
-<form>
+<form [formGroup]="userForm">
     <div>
         <label>Username</label>
-        <input type="text" name="username" [(ngModel)]="user.username"/>
+        <input type="text" name="username" formControlName="username"/>
     </div>
     <div>
         <label>Password</label>
-        <input type="text" name="password" [(ngModel)]="user.password"/>
+        <input type="text" name="password" formControlName="password"/>
     </div>
     <div>
         <label>Full Name</label>
-        <input type="text" name="name" [(ngModel)]="user.name"/>
+        <input type="text" name="name"/>
     </div>
     <div>
         <label>Mobile No.</label>
-        <input type="number" name="mobileNo" [(ngModel)]="user.mobileNo"/>
+        <input type="number" name="mobileNo"/>
+    </div>
+    <div>
+        <label>Email</label>
+        <input type="text" name="email" formControlName="email"/>
     </div>
     <div>
         <button (click)="createUser()">Create User</button>

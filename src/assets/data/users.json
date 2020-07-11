@@ -1,0 +1,12 @@
+{
+    "total": 8,
+    "users": [{
+        "name": "Rohan Thakare",
+        "id": "USR001",
+        "username": "rohan"
+    }, {
+        "name": "Mandar Pawar",
+        "id": "USR002",
+        "username": "mandar"
+    }]
+}
