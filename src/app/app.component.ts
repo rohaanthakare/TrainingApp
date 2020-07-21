@@ -10,7 +10,4 @@ export class AppComponent {
   title = 'Training Application';
 
   constructor(private router: Router) { }
-  navigateToPage(page): void {
-    this.router.navigate([page]);
-  }
 }

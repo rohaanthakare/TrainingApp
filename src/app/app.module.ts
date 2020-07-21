@@ -7,8 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { UserModule } from './user/user.module';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthGuardService } from './services/auth-guard.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule, FormsModule, HttpClientModule,
     AppRoutingModule, UserModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: AuthGuardService, multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
