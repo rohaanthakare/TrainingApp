@@ -3,10 +3,20 @@
     "users": [{
         "name": "Rohan Thakare",
         "id": "USR001",
-        "username": "rohan"
+        "username": "rohan",
+        "role": "admin",
+        "password": "123456"
     }, {
         "name": "Mandar Pawar",
         "id": "USR002",
-        "username": "mandar"
+        "username": "mandar",
+        "role": "teacher",
+        "password": "123456"
+    }, {
+        "name": "Momin Niyaz",
+        "id": "USR003",
+        "username": "momin",
+        "role": "student",
+        "password": "123456"
     }]
 }

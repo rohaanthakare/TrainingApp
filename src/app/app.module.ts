@@ -19,9 +19,7 @@ import { AuthGuardService } from './services/auth-guard.service';
     BrowserModule, FormsModule, HttpClientModule,
     AppRoutingModule, UserModule
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS, useClass: AuthGuardService, multi: true
-  }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,6 +13,11 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
   navigateToPage(page): void {
-    this.router.navigate([page]);
+    if (page === 'logout') {
+      localStorage.clear();
+      this.router.navigate(['']);
+    } else {
+      this.router.navigate([page]);
+    }
   }
 }
