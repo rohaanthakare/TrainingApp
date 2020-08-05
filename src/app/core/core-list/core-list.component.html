@@ -1,0 +1,22 @@
+<button (click)="createButtonClicked()">Create</button>
+<input #filterField placeholder="Search" type="text" name="searchField" (keyup)="filterData($event)" 
+    *ngIf="hasFilter">
+<h2>{{listTitle}}</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+    <tr *ngFor="let item of data">
+        <td>
+            <a href="javascript:" (click)="editItem(item)">{{item.id}}</a>
+        </td>
+        <td>{{item.name}}</td>
+    </tr>
+</table>
+<div *ngIf="hasPagination">
+    <button (click)="createButtonClicked()">First</button>
+    <button (click)="createButtonClicked()">Next</button>
+    <button (click)="createButtonClicked()">Prev</button>
+    <button (click)="createButtonClicked()">Last</button>
+</div>

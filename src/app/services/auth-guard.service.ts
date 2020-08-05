@@ -9,7 +9,6 @@ export class AuthGuardService implements CanActivate {
   constructor(private router: Router) { }
 
   canActivate(): any {
-    console.log('-------inside auth guard------');
     if (localStorage.getItem('username')) {
       return true;
     }

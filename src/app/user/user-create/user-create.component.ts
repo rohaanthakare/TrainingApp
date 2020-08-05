@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
+import { ActivatedRoute } from '@angular/router';
 
 export class User {
   username: string;
@@ -18,6 +19,7 @@ export class User {
   styleUrls: ['./user-create.component.scss']
 })
 export class UserCreateComponent implements OnInit {
+  userId: any;
   user: User = new User();
   usernameCtrl = new FormControl('', [Validators.required]);
   passwordCtrl = new FormControl('', [Validators.required, Validators.minLength(6)]);
@@ -27,9 +29,35 @@ export class UserCreateComponent implements OnInit {
     password: this.passwordCtrl,
     email: this.emailCtrl
   });
-  constructor(private formnBuilder: FormBuilder, private userService: UserService) { }
+  constructor(private formnBuilder: FormBuilder, private userService: UserService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(
+      params => {
+        if (params.get('user_id')) {
+          console.log(params.get('user_id'));
+          this.userId = params.get('user_id');
+          console.log('This is edit page');
+          this.getUserDeatils();
+        } else {
+          console.log('This is create page');
+        }
+      }
+    );
+  }
+
+  getUserDeatils() {
+    console.log('Inside getUserDetails');
+    this.userService.getUsers().subscribe(
+      response => {
+        const users = response.users;
+        this.user = users.find((tmp) => {
+          if (tmp.id === this.userId) {
+            return true;
+          }
+        });
+      }
+    );
   }
 
   createUser(): void {

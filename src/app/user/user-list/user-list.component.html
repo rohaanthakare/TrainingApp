@@ -1,12 +1,3 @@
-<button (click)="navigateToUserCreate()">Add New User</button>
-<h2>Users</h2>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-    </tr>
-    <tr *ngFor="let user of users">
-        <td>{{user.id}}</td>
-        <td>{{user.name}}</td>
-    </tr>
-</table>
+<button (click)="addDefaultUser()">Add Default User</button>
+<app-core-list [listTitle]="listTitle" (createClicked)="navigateToUserCreate()" [columns]="columns"
+    (editClicked)="navigateToUserEdit($event)" hasFilter="true" hasPagination="true"></app-core-list>

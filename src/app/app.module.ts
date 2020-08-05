@@ -8,7 +8,6 @@ import { HomeComponent } from './home/home.component';
 import { UserModule } from './user/user.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthGuardService } from './services/auth-guard.service';
 @NgModule({
   declarations: [
     AppComponent,
