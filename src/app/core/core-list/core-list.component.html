@@ -15,8 +15,8 @@
     </tr>
 </table>
 <div *ngIf="hasPagination">
-    <button (click)="createButtonClicked()">First</button>
-    <button (click)="createButtonClicked()">Next</button>
-    <button (click)="createButtonClicked()">Prev</button>
-    <button (click)="createButtonClicked()">Last</button>
+    <button (click)="navigateToPage('first')" [disabled]="currentPage === 0">First</button>
+    <button (click)="navigateToPage('prev')" [disabled]="currentPage === 0">Prev</button>
+    <button (click)="navigateToPage('next')" [disabled]="currentPage == lastPageNumber">Next</button>
+    <button (click)="navigateToPage('last')" [disabled]="currentPage == lastPageNumber">Last</button>
 </div>

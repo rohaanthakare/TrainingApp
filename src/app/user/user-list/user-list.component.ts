@@ -12,10 +12,6 @@ export class UserListComponent implements OnInit {
   listTitle = 'Users';
   @ViewChild(CoreListComponent, {static: true}) listCmp: CoreListComponent;
   users = [];
-  columns = [{
-    name: 'name',
-    header: 'Name'
-  }];
   constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {

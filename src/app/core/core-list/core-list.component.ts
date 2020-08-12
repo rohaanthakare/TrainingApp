@@ -10,6 +10,12 @@ export class CoreListComponent implements OnInit {
   @Input() listTitle: string = 'List';
   data = [];
   allData = [];
+  pageSize = 2;
+  totalRecords = 0;
+  startIndex = 0;
+  endIndex = this.startIndex + this.pageSize;
+  currentPage = 0;
+  lastPageNumber = 0;
   @Input() hasFilter: boolean;
   @Input() hasPagination: boolean;
   @Output() createClicked: EventEmitter<any> = new EventEmitter();
@@ -28,11 +34,43 @@ export class CoreListComponent implements OnInit {
   setListData(inputData) {
     this.data = inputData;
     this.allData = inputData;
+    this.lastPageNumber = Math.floor(this.allData.length / this.pageSize);
+    this.setPagination();
   }
 
   editItem(item) {
     console.log(item);
     this.editClicked.emit(item);
+  }
+
+  setPagination() {
+    // this.endIndex = this.startIndex + this.pageSize;
+    this.data = this.allData.slice(this.startIndex, this.endIndex);
+  }
+
+  navigateToPage(param) {
+    if (param === 'next') {
+      this.currentPage++;
+      this.startIndex = this.currentPage * this.pageSize;
+    }
+
+    if (param === 'prev') {
+      this.currentPage--;
+      this.startIndex = this.currentPage * this.pageSize; 
+    }
+
+    if (param === 'first') {
+      this.currentPage = 0;
+      this.startIndex = this.currentPage * this.pageSize; 
+    }
+
+    if (param === 'last') {
+      this.currentPage = this.lastPageNumber;
+      this.startIndex = this.currentPage * this.pageSize; 
+    }
+
+    this.endIndex = this.startIndex + this.pageSize; 
+    this.setPagination();
   }
 
   filterData(event) {
@@ -44,5 +82,8 @@ export class CoreListComponent implements OnInit {
         return false;
       }
     });
+    if (this.data.length > this.pageSize) {
+      this.setPagination();
+    }
   }
 }
