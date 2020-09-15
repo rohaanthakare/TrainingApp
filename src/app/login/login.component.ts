@@ -20,27 +20,39 @@ export class LoginComponent implements OnInit {
   }
 
   authenticateUser() {
-    this.userService.getUsers().subscribe(
-      response => {
-        console.log('-------User List--------');
+    const userData = {
+      username: this.username,
+      password: this.password
+    };
+    this.userService.authenticateUser(userData).subscribe(
+      (response: any) => {
+        console.log('-------User Authenticate--------');
         console.log(response);
-        const users = response.users;
-        let userFound = false;
-        for (let index = 0; index < users.length; index++) {
-          if (users[index].username === this.username
-            && users[index].password === this.password) {
-              localStorage.setItem('username', users[index].username);
-              localStorage.setItem('role', users[index].role);
-              userFound = true;
-              break;
-          }
-        }
+        // alert('User Authenticated Successfully');
+        localStorage.setItem('username', response.user.username);
+        localStorage.setItem('user_id', response.user._id);
+        this.navigateToHome();
+        // const users = response.users;
+        // let userFound = false;
+        // for (let index = 0; index < users.length; index++) {
+        //   if (users[index].username === this.username
+        //     && users[index].password === this.password) {
+        //       localStorage.setItem('username', users[index].username);
+        //       localStorage.setItem('role', users[index].role);
+        //       localStorage.setItem('department_id', users[index].department_id);
+        //       userFound = true;
+        //       break;
+        //   }
+        // }
 
-        if (userFound) {
-          this.navigateToHome();   
-        } else {
-          alert('Invalid username / password');
-        }
+        // if (userFound) {
+        //   this.navigateToHome();   
+        // } else {
+        //   alert('Invalid username / password');
+        // }
+      },
+      error => {
+        alert('Error while authenticating User');
       }
     );
     // this.navigateToHome();

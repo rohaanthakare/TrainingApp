@@ -12,11 +12,11 @@ export class HomeComponent implements OnInit, OnChanges, DoCheck, AfterContentIn
   testDate = new Date();
   testPercentage = (this.testNumber / 100);
   constructor(private router: Router) {
-    console.log('Inside constructor');
+    // console.log('Inside constructor');
   }
 
   ngOnInit(): void {
-    console.log('Inside ngOnInit');
+    // console.log('Inside ngOnInit');
     setTimeout(() => {
       this.testNumber = 84;
     }, 10000);
@@ -31,27 +31,27 @@ export class HomeComponent implements OnInit, OnChanges, DoCheck, AfterContentIn
   }
 
   ngAfterViewInit() {
-    console.log('Inside ngAfterViewInit');
+    // console.log('Inside ngAfterViewInit');
   }
 
   ngDoCheck()  {
-    console.log('Inside ngDoCheck');
+    // console.log('Inside ngDoCheck');
     this.testPercentage = (this.testNumber / 100);
   }
 
   ngAfterContentInit() {
-    console.log('Inside ngAfterContentInit');
+    // console.log('Inside ngAfterContentInit');
   }
 
   ngAfterViewChecked() {
-    console.log('Inside ngAfterViewChecked');
+    // console.log('Inside ngAfterViewChecked');
   }
 
   ngAfterContentChecked() {
-    console.log('Inside ngAfterContentChecked');
+    // console.log('Inside ngAfterContentChecked');
   }
 
   ngOnChanges() {
-    console.log('Inside ngOnChanges');
+    // console.log('Inside ngOnChanges');
   }
 }

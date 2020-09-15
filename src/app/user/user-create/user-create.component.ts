@@ -24,10 +24,14 @@ export class UserCreateComponent implements OnInit {
   usernameCtrl = new FormControl('', [Validators.required]);
   passwordCtrl = new FormControl('', [Validators.required, Validators.minLength(6)]);
   emailCtrl = new FormControl('', [Validators.required, Validators.email]);
+  fullNameCtrl = new FormControl('', [Validators.required]);
+  mobileNoCtrl = new FormControl('', [Validators.required]);
   userForm: FormGroup = this.formnBuilder.group({
     username: this.usernameCtrl,
     password: this.passwordCtrl,
-    email: this.emailCtrl
+    email: this.emailCtrl,
+    mobileNo: this.mobileNoCtrl,
+    fullName: this.fullNameCtrl
   });
   constructor(private formnBuilder: FormBuilder, private userService: UserService, private route: ActivatedRoute) { }
 
@@ -47,17 +51,19 @@ export class UserCreateComponent implements OnInit {
   }
 
   getUserDeatils() {
-    console.log('Inside getUserDetails');
-    this.userService.getUsers().subscribe(
+    this.userService.getUserDetail(this.userId).subscribe(
       response => {
-        const users = response.users;
-        this.user = users.find((tmp) => {
-          if (tmp.id === this.userId) {
-            return true;
-          }
-        });
+        this.user = response.user;
+        this.setFormData();
       }
     );
+  }
+
+  setFormData() {
+    for (const fieldCtrl of Object.keys(this.userForm.controls)) {
+      console.log(this.userForm.get(fieldCtrl));
+      this.userForm.get(fieldCtrl).setValue(this.user[fieldCtrl]);
+    }
   }
 
   createUser(): void {

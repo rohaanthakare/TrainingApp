@@ -9,6 +9,7 @@ export class RoleGuardService implements CanActivate{
   constructor() { }
 
   canActivate(): any {
+    // console.log('-------inside role guard------');
     if (localStorage.getItem('role') === 'student') {
       alert('You are not authorize to access this page');
       return false;

@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { UserModule } from './user/user.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { UserInfoService } from './services/user-info.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     BrowserModule, FormsModule, HttpClientModule,
     AppRoutingModule, UserModule
   ],
-  providers: [],
+  providers: [{
+    multi: true,
+    provide: HTTP_INTERCEPTORS,
+    useClass: UserInfoService
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

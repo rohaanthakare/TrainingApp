@@ -8,9 +8,10 @@ import { Router } from '@angular/router';
 })
 export class CoreListComponent implements OnInit {
   @Input() listTitle: string = 'List';
+  @Input() columns = [];
   data = [];
   allData = [];
-  pageSize = 2;
+  pageSize = 5;
   totalRecords = 0;
   startIndex = 0;
   endIndex = this.startIndex + this.pageSize;
@@ -20,6 +21,7 @@ export class CoreListComponent implements OnInit {
   @Input() hasPagination: boolean;
   @Output() createClicked: EventEmitter<any> = new EventEmitter();
   @Output() editClicked: EventEmitter<any> = new EventEmitter();
+  @Output() navigateToPageClicked: EventEmitter<any> = new EventEmitter();
   @ViewChild('filterField', {static: false}) filterField: ElementRef;
   constructor() { }
 
@@ -31,11 +33,12 @@ export class CoreListComponent implements OnInit {
     this.createClicked.emit();
   }
 
-  setListData(inputData) {
+  setListData(inputData, total?) {
     this.data = inputData;
     this.allData = inputData;
     this.lastPageNumber = Math.floor(this.allData.length / this.pageSize);
-    this.setPagination();
+    this.totalRecords = total;
+    // this.setPagination();
   }
 
   editItem(item) {
@@ -70,13 +73,14 @@ export class CoreListComponent implements OnInit {
     }
 
     this.endIndex = this.startIndex + this.pageSize; 
-    this.setPagination();
+    this.navigateToPageClicked.emit(this.currentPage);
+    // this.setPagination();
   }
 
   filterData(event) {
     const searchValue = event.target.value;
     this.data = this.allData.filter((d) => {
-      if (d.name.toLowerCase().includes(searchValue.toLowerCase())) {
+      if (d.fullName.toLowerCase().includes(searchValue.toLowerCase())) {
         return true;
       } else {
         return false;

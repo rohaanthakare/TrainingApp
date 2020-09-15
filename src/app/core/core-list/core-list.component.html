@@ -1,22 +1,28 @@
-<button (click)="createButtonClicked()">Create</button>
+<!-- <button (click)="createButtonClicked()">Create</button>
 <input #filterField placeholder="Search" type="text" name="searchField" (keyup)="filterData($event)" 
-    *ngIf="hasFilter">
+    *ngIf="hasFilter"> -->
 <h2>{{listTitle}}</h2>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-    </tr>
-    <tr *ngFor="let item of data">
-        <td>
-            <a href="javascript:" (click)="editItem(item)">{{item.id}}</a>
-        </td>
-        <td>{{item.name}}</td>
-    </tr>
-</table>
-<div *ngIf="hasPagination">
+<p-table [value]="data">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Username</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Mobile No.</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item>
+        <tr>
+            <td>{{item.username}}</td>
+            <td>{{item.fullName}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.mobileNo}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+<!-- <div *ngIf="hasPagination">
     <button (click)="navigateToPage('first')" [disabled]="currentPage === 0">First</button>
     <button (click)="navigateToPage('prev')" [disabled]="currentPage === 0">Prev</button>
-    <button (click)="navigateToPage('next')" [disabled]="currentPage == lastPageNumber">Next</button>
-    <button (click)="navigateToPage('last')" [disabled]="currentPage == lastPageNumber">Last</button>
-</div>
+    <button (click)="navigateToPage('next')" [disabled]="(currentPage == lastPageNumber || pageSize >= totalRecords)">Next</button>
+    <button (click)="navigateToPage('last')" [disabled]="(currentPage == lastPageNumber || pageSize >= totalRecords)">Last</button>
+</div> -->

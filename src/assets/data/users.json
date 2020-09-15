@@ -5,30 +5,35 @@
         "id": "USR001",
         "username": "rohan",
         "role": "admin",
-        "password": "123456"
+        "password": "123456",
+        "department_id": 1
     }, {
         "name": "Mandar Pawar",
         "id": "USR002",
         "username": "mandar",
         "role": "teacher",
-        "password": "123456"
+        "password": "123456",
+        "department_id": 1
     }, {
         "name": "Momin Niyaz",
         "id": "USR003",
         "username": "momin",
         "role": "student",
-        "password": "123456"
+        "password": "123456",
+        "department_id": 2
     }, {
         "name": "Harshad Gokhle",
         "id": "USR004",
         "username": "harshad",
         "role": "student",
-        "password": "123456"
+        "password": "123456",
+        "department_id": 2
     }, {
         "name": "Matin Ansari",
         "id": "USR005",
         "username": "matin",
         "role": "student",
-        "password": "123456"
+        "password": "123456",
+        "department_id": 3
     }]
 }
