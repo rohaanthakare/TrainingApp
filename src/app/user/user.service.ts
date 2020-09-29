@@ -9,10 +9,10 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  public getUsers(pageNumber?: any, pageSize?: any): any {
+  public getUsers(startIndex?: any, pageSize?: any): any {
     return this.http.get(`${environment.baseURL}/user/users`, {
       params: {
-        page_number: pageNumber,
+        start_index: startIndex,
         page_size: pageSize
       }
     });
@@ -28,5 +28,9 @@ export class UserService {
 
   public authenticateUser(userData) {
     return this.http.post(`${environment.baseURL}/user/authenticate`, userData);
+  }
+
+  public getDepartments() {
+    return this.http.get('assets/data/departments.json');
   }
 }

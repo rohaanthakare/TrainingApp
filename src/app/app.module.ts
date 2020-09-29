@@ -1,5 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+
+// PrimeNG Modules
+import { MenuModule } from 'primeng/menu';
+// import { MenuItem } from 'primeng/api';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,8 +21,8 @@ import { UserInfoService } from './services/user-info.service';
     HomeComponent
   ],
   imports: [
-    BrowserModule, FormsModule, HttpClientModule,
-    AppRoutingModule, UserModule
+    BrowserModule, BrowserAnimationsModule,FormsModule, HttpClientModule,
+    AppRoutingModule, UserModule, MenuModule
   ],
   providers: [{
     multi: true,

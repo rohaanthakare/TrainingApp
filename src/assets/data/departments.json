@@ -1,0 +1,22 @@
+{
+    "total": 7,
+    "departments": [{
+        "name": "Physics",
+        "id": "DEPT001"
+    }, {
+        "name": "Chemistry",
+        "id": "DEPT002"
+    }, {
+        "name": "Biology",
+        "id": "DEPT003"
+    }, {
+        "name": "Computer",
+        "id": "DEPT004"
+    }, {
+        "name": "Arts",
+        "id": "DEPT005"
+    }, {
+        "name": "Mechanical",
+        "id": "DEPT006"
+    }]
+}

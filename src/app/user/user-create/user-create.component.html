@@ -1,32 +1,82 @@
+<p-toast></p-toast>
 <h2>
     New User Form
 </h2>
-<form [formGroup]="userForm">
-    <div>
-        <label>Username</label>
-        <input type="text" name="username" formControlName="username"/>
-    </div>
-    <div>
-        <label>Password</label>
-        <input type="text" name="password" formControlName="password"/>
-    </div>
-    <div>
-        <label>Full Name</label>
-        <input type="text" name="name" formControlName="fullName"/>
-    </div>
-    <div>
-        <label>Mobile No.</label>
-        <input type="number" name="mobileNo" formControlName="mobileNo"/>
-    </div>
-    <div>
-        <label>Email</label>
-        <input type="text" name="email" formControlName="email"/>
-    </div>
-    <div>
-        <button (click)="createUser()">Create User</button>
-    </div>
-</form>
-<div>
+    <form [formGroup]="userForm">
+        <div class="p-grid">
+            <div class="p-col-12 p-sm-12 p-md-6 p-lg-4 pad-1">
+                <span class="p-float-label">
+                    <input id="username" type="text" name="username" formControlName="username" pInputText> 
+                    <label for="username">Username</label>
+                    <small id="username2-help" class="p-invalid"
+                        *ngIf="usernameCtrl.errors?.required && submitted">
+                        Username is not available.
+                    </small>
+                </span>
+            </div>
+            <div class="p-col-12 p-sm-12 p-md-6 p-lg-4 pad-1">
+                <span class="p-float-label">
+                    <input id="password" type="password" name="password" formControlName="password" pPassword> 
+                    <label for="password">Password</label>
+                    <small id="username2-help" class="p-invalid"
+                        *ngIf="passwordCtrl.errors?.required && submitted">
+                        Password is required.
+                    </small>
+                    <small id="username2-help" class="p-invalid"
+                        *ngIf="passwordCtrl.errors?.minlength && submitted">
+                        Password is too short.
+                    </small>
+                </span>
+            </div>
+            <div class="p-col-12 p-sm-12 p-md-6 p-lg-4 pad-1">
+                <span class="p-float-label">
+                    <input id="fullName" type="text" name="name" formControlName="fullName" pInputText autocomplete="off"> 
+                    <label for="fullName">Name</label>
+                </span>
+            </div>
+            <div class="p-col-12 p-sm-12 p-md-6 p-lg-4 pad-1">
+                <span class="p-float-label">
+                    <input id="mobileNo" type="number" name="mobileNo" formControlName="mobileNo" pInputText> 
+                    <!-- <p-inputMask mask="(999) 999-9999" formControlName="mobileNo" placeholder="(999) 999-9999"></p-inputMask> -->
+                    <label for="mobileNo">Mobile No.</label>
+                </span>
+            </div>
+            <div class="p-col-12 p-sm-12 p-md-6 p-lg-4 pad-1">
+                <span class="p-float-label">
+                    <input id="email" type="email" name="email" formControlName="email" pInputText> 
+                    <label for="email">Email</label>
+                </span>
+            </div>
+            <div class="p-col-12 p-sm-12 p-md-6 p-lg-4 pad-1">
+                <span class="p-float-label">
+                    <!-- <input id="dob" type="date" name="dob" formControlName="dob" pInputText autocomplete="off">  -->
+                    <p-calendar inputId="dob" formControlName="dob" monthNavigator="true" yearNavigator="true"
+                    yearRange="1990:2020" dateFormat="dd-M-yy"></p-calendar>
+                    <label for="dob">Date of Birth</label>
+                </span>
+            </div>
+            <div class="p-col-12 p-sm-12 p-md-6 p-lg-4 pad-1">
+                <span class="p-float-label">
+                    <!-- <input id="role" type="text" name="role" formControlName="role" pInputText autocomplete="off">  -->
+                    <p-dropdown [options]="roles" name="role" optionLabel="test" formControlName="role"></p-dropdown>
+                    <label for="role">Role</label>
+                </span>
+            </div>
+            <div class="p-col-12 p-sm-12 p-md-6 p-lg-4 pad-1">
+                <span class="p-float-label">
+                    <p-autoComplete formControlName="department" [suggestions]="filteredDept" (completeMethod)="searchDept($event)" 
+                        field="name"></p-autoComplete>
+                    <label for="department">Department</label>
+                </span>
+            </div>
+        </div>
+        
+        <div>
+            <!-- <button >Create User</button> -->
+            <p-button label="Save" icon="pi pi-save" (click)="createUser()"></p-button>
+        </div>
+    </form>
+<!-- <div>
     <div>
         <label>Username - {{user.username}}</label>
     </div>
@@ -39,4 +89,4 @@
     <div>
         <label>Mobile No. - {{user.mobileNo}}</label>
     </div>
-</div>
+</div> -->

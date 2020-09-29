@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewChecked } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { MenuItem } from 'primeng/api';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,6 +11,37 @@ export class HomeComponent implements OnInit, OnChanges, DoCheck, AfterContentIn
   testNumber = 78;
   testDate = new Date();
   testPercentage = (this.testNumber / 100);
+  items: MenuItem[] = [{
+    label: 'Users', icon: 'pi pi-fw pi-users',
+    command: (event) => {
+      this.navigateToPage('home/users');
+    }
+  }, {
+    label: 'Departments', icon: 'pi pi-fw pi-download',
+    command: (event) => {
+      this.navigateToPage('home/departments');
+    }
+  }, {
+    label: 'Employees', icon: 'pi pi-fw pi-refresh',
+    command: (event) => {
+      this.navigateToPage('home/employees');
+    }
+  }, {
+    label: 'Students', icon: 'pi pi-fw pi-refresh',
+    command: (event) => {
+      this.navigateToPage('home/students');
+    }
+  }, {
+    label: 'Courses', icon: 'pi pi-fw pi-refresh',
+    command: (event) => {
+      this.navigateToPage('home/courses');
+    }
+  }, {
+    label: 'Logout', icon: 'pi pi-fw pi-sign-out',
+    command: (event) => {
+      this.navigateToPage('logout');
+    }
+  }];
   constructor(private router: Router) {
     // console.log('Inside constructor');
   }
@@ -53,5 +84,9 @@ export class HomeComponent implements OnInit, OnChanges, DoCheck, AfterContentIn
 
   ngOnChanges() {
     // console.log('Inside ngOnChanges');
+  }
+
+  testFunction() {
+    alert("good");
   }
 }

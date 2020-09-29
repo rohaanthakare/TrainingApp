@@ -2,10 +2,28 @@
 <input #filterField placeholder="Search" type="text" name="searchField" (keyup)="filterData($event)" 
     *ngIf="hasFilter"> -->
 <h2>{{listTitle}}</h2>
-<p-table [value]="data">
+<p-toolbar>
+    <div class="p-toolbar-group-left">
+        <p-button label="Create" icon="pi pi-plus" (click)="createButtonClicked()"></p-button>
+        <!-- <p-button label="Upload" icon="pi pi-upload" styleClass="p-button-success"></p-button>
+            
+        <i class="pi pi-bars"></i> -->
+        
+        <!-- <p-splitButton label="Save" icon="pi pi-check" [model]="items" styleClass="p-button-warning"></p-splitButton> -->
+    </div>
+    
+    <!-- <div class="p-toolbar-group-right">
+        <p-button icon="pi pi-search"></p-button>
+        <p-button icon="pi pi-calendar" styleClass="p-button-success"></p-button>
+        <p-button icon="pi pi-times" styleClass="p-button-danger"></p-button>
+    </div> -->
+</p-toolbar>
+<p-table [value]="data" [paginator]="true" [rows]="pageSize" [totalRecords]="totalCount" [lazy]="true"
+    [showCurrentPageReport]="true" currentPageReportTemplate="Showing users from {first} to {last} of {totalRecords}"
+    (onPage)="onPageChange($event)" sortMode="multiple">
     <ng-template pTemplate="header">
         <tr>
-            <th>Username</th>
+            <th pSortableColumn="username">Username <p-sortIcon field="username"></p-sortIcon></th>
             <th>Full Name</th>
             <th>Email</th>
             <th>Mobile No.</th>

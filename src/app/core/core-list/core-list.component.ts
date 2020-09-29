@@ -17,6 +17,7 @@ export class CoreListComponent implements OnInit {
   endIndex = this.startIndex + this.pageSize;
   currentPage = 0;
   lastPageNumber = 0;
+  totalCount = 0;
   @Input() hasFilter: boolean;
   @Input() hasPagination: boolean;
   @Output() createClicked: EventEmitter<any> = new EventEmitter();
@@ -37,7 +38,7 @@ export class CoreListComponent implements OnInit {
     this.data = inputData;
     this.allData = inputData;
     this.lastPageNumber = Math.floor(this.allData.length / this.pageSize);
-    this.totalRecords = total;
+    this.totalCount = total;
     // this.setPagination();
   }
 
@@ -89,5 +90,11 @@ export class CoreListComponent implements OnInit {
     if (this.data.length > this.pageSize) {
       this.setPagination();
     }
+  }
+
+  onPageChange(event) {
+    console.log('--------inside on page-------');
+    console.log(event);
+    this.navigateToPageClicked.emit(event);
   }
 }

@@ -14,7 +14,7 @@ export class UserListComponent implements OnInit {
   @ViewChild(CoreListComponent, {static: true}) listCmp: CoreListComponent;
   users = [];
   pageSize: any;
-  pageNumber = 0;
+  startIndex = 0;
   columns = [{
     header: 'Username',
     field: 'username',
@@ -75,7 +75,7 @@ export class UserListComponent implements OnInit {
   }
 
   getUsersList() {
-    this.userService.getUsers(this.pageNumber, this.pageSize).subscribe(
+    this.userService.getUsers(this.startIndex, this.pageSize).subscribe(
       response => {
         this.users = response.users;
         console.log('-----User List------');
@@ -112,7 +112,7 @@ export class UserListComponent implements OnInit {
   navigateToPage(eventParams) {
     console.log('--inside navigate to Page');
     console.log(eventParams);
-    this.pageNumber = eventParams;
+    this.startIndex = eventParams.first;
     this.getUsersList();
   }
 }

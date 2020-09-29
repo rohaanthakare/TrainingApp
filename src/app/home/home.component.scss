@@ -1,0 +1,26 @@
+@media (max-width: 1024px) {
+    .my-menu-bar {
+        background-color: salmon;
+        display: none;
+    }
+
+    .my-content-container {
+        width: 100%;
+        padding: 20px;
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1024px) {
+    .my-menu-bar {
+        display: block;
+        width: 25%;
+        padding: 10px;
+        max-width: 220px;
+    }
+
+    .my-content-container {
+        width: 75%;
+        padding: 10px;
+    }
+}
